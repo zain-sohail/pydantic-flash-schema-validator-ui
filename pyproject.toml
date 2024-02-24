@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "pydantic-flash-schema-validator-ui"
+version = "0.1.0"
+description = ""
+authors = ["Zain Sohail <zainsohail04@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10, <=3.12"
+streamlit = "^1.31.1"
+pydantic = "^2.6.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+include = ["schema/*.py", "ui/*.py"]
+select = [
+    "E", # pycodestyle
+    "W", # pycodestyle
+    "PL", # pylint
+]
+ignore = [
+    "E701", # Multiple statements on one line (colon)
+    "PLR0911", # Too many return statements
+    "PLR0912", # Too many branches
+    "PLR0913", # Too many arguments in function definition
+    "PLR0915", # Too many statements
+    "PLR2004", # Magic value used instead of constant
+    "PLR5501", # else-if-used
+    "PLW2901", # redefined-loop-name
+]
+fixable = ["ALL"]
+line-length = 100 # change the default line length number or characters.
+
+[tool.mypy]
+strict = false
+ignore_missing_imports = true
+follow_imports = "silent"
+no_strict_optional = true
+disable_error_code = "import, annotation-unchecked"
