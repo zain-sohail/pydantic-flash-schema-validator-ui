@@ -7,6 +7,7 @@ from pydantic import model_validator
 
 from .core import CoreConfig
 from .dataframe import DataFrameConfig
+from .paths import DataPaths
 
 
 class LoaderConfig(BaseModel):

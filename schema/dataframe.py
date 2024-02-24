@@ -6,6 +6,8 @@ from pydantic import BaseModel
 from pydantic import field_validator
 from pydantic import model_validator
 
+from .channel import Channel
+
 
 class DataFrameConfig(BaseModel):
     """
