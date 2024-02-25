@@ -1,0 +1,248 @@
+{
+    "core": {
+        "loader": "flash",
+        "beamline": "pg2",
+        "paths": {
+            "data_raw_dir": "tests/data/loader/flash/",
+            "data_parquet_dir": "tests/data/loader/flash/parquet"
+        }
+    },
+    "dataframe": {
+        "daq": "fl1user3",
+        "ubid_offset": 5,
+        "forward_fill_iterations": 2,
+        "split_sector_id_from_dld_time": true,
+        "sector_id_reserved_bits": 3,
+        "x_column": "dldPosX",
+        "corrected_x_column": "X",
+        "kx_column": "kx",
+        "y_column": "dldPosY",
+        "corrected_y_column": "Y",
+        "ky_column": "ky",
+        "tof_column": "dldTimeSteps",
+        "tof_ns_column": "dldTime",
+        "corrected_tof_column": "tm",
+        "tof_binwidth": 2.0576131995767354e-11,
+        "tof_binning": 3,
+        "sector_id_column": "dldSectorID",
+        "sector_delays": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "jitter_cols": [
+            "dldPosX",
+            "dldPosY",
+            "dldTimeSteps"
+        ],
+        "units": {
+            "dldPosX": "step",
+            "dldPosY": "step",
+            "dldTimeSteps": "step",
+            "tof_voltage": "V",
+            "extractorVoltage": "V",
+            "extractorCurrent": "A",
+            "cryoTemperature": "K",
+            "sampleTemperature": "K",
+            "dldTime": "ns",
+            "timeStamp": "s",
+            "kx": "1/A",
+            "ky": "1/A"
+        },
+        "channels": {
+            "pulseId": {
+                "format": "per_electron",
+                "index_key": "/uncategorised/FLASH.EXP/HEXTOF.DAQ/DLD1/index",
+                "dataset_key": "/uncategorised/FLASH.EXP/HEXTOF.DAQ/DLD1/value",
+                "slice": 2
+            },
+            "dldPosX": {
+                "format": "per_electron",
+                "group_name": "/uncategorised/FLASH.EXP/HEXTOF.DAQ/DLD1/",
+                "slice": 1,
+                "dtype": "uint16"
+            },
+            "dldPosY": {
+                "format": "per_electron",
+                "group_name": "/uncategorised/FLASH.EXP/HEXTOF.DAQ/DLD1/",
+                "slice": 0,
+                "dtype": "uint16"
+            },
+            "dldTimeSteps": {
+                "format": "per_electron",
+                "group_name": "/uncategorised/FLASH.EXP/HEXTOF.DAQ/DLD1/",
+                "slice": 3,
+                "dtype": "uint32"
+            },
+            "dldAux": {
+                "format": "per_pulse",
+                "group_name": "/uncategorised/FLASH.EXP/HEXTOF.DAQ/DLD1/",
+                "slice": 4,
+                "dldAuxChannels": {
+                    "sampleBias": 0,
+                    "tofVoltage": {
+                        "slice": 1
+                    },
+                    "extractorVoltage": 2,
+                    "extractorCurrent": 3,
+                    "cryoTemperature": 4,
+                    "sampleTemperature": 5,
+                    "dldTimeBinSize": 15
+                }
+            },
+            "timeStamp": {
+                "format": "per_train",
+                "group_name": "/uncategorised/FLASH.DIAG/TIMINGINFO/TIME1.BUNCH_FIRST_INDEX.1/"
+            },
+            "delayStage": {
+                "format": "per_train",
+                "group_name": "/zraw/FLASH.SYNC/LASER.LOCK.EXP/F1.PG.OSC/FMC0.MD22.1.ENCODER_POSITION.RD/dGroup/"
+            },
+            "pulserSignAdc": {
+                "format": "per_pulse",
+                "group_name": "/FL1/Experiment/PG/SIS8300 100MHz ADC/CH6/TD/"
+            },
+            "gmdTunnel": {
+                "format": "per_pulse",
+                "group_name": "/FL1/Photon Diagnostic/GMD/Pulse resolved energy/energy tunnel/",
+                "slice": 0
+            }
+        },
+        "stream_name_prefixes": {
+            "pbd": "GMD_DATA_gmd_data",
+            "pbd2": "FL2PhotDiag_pbd2_gmd_data",
+            "fl1user1": "FLASH1_USER1_stream_2",
+            "fl1user2": "FLASH1_USER2_stream_2",
+            "fl1user3": "FLASH1_USER3_stream_2",
+            "fl2user1": "FLASH2_USER1_stream_2",
+            "fl2user2": "FLASH2_USER2_stream_2"
+        },
+        "beamtime_dir": {
+            "pg2": "/asap3/flash/gpfs/pg2/"
+        },
+        "adc_column": "ADC",
+        "bias_column": "sampleBias",
+        "energy_column": "energy",
+        "delay_column": "delay",
+        "adc_binning": 1,
+        "jitter_amps": 0.5,
+        "timed_dataframe_unit_time": 0.001
+    },
+    "energy": {
+        "bins": 1000,
+        "ranges": [
+            100000,
+            150000
+        ],
+        "normalize": true,
+        "normalize_span": 7,
+        "normalize_order": 1,
+        "fastdtw_radius": 2,
+        "peak_window": 7,
+        "calibration_method": "lmfit",
+        "energy_scale": "kinetic",
+        "tof_fermi": 132250,
+        "tof_width": [
+            -600,
+            1000
+        ],
+        "x_width": [
+            -20,
+            20
+        ],
+        "y_width": [
+            -20,
+            20
+        ],
+        "color_clip": 300
+    },
+    "momentum": {
+        "axes": [
+            "@x_column",
+            "@y_column",
+            "@tof_column"
+        ],
+        "bins": [
+            512,
+            512,
+            300
+        ],
+        "ranges": [
+            [
+                -256,
+                1792
+            ],
+            [
+                -256,
+                1792
+            ],
+            [
+                132000,
+                138000
+            ]
+        ],
+        "detector_ranges": [
+            [
+                0,
+                2048
+            ],
+            [
+                0,
+                2048
+            ]
+        ],
+        "center_pixel": [
+            256,
+            256
+        ],
+        "sigma": 5,
+        "fwhm": 8,
+        "sigma_radius": 1
+    },
+    "delay": {
+        "adc_range": [
+            1900,
+            25600
+        ],
+        "time0": 0,
+        "flip_time_axis": false
+    },
+    "binning": {
+        "hist_mode": "numba",
+        "mode": "fast",
+        "pbar": true,
+        "threads_per_worker": 4,
+        "threadpool_API": "blas"
+    },
+    "histogram": {
+        "bins": [
+            80,
+            80,
+            80
+        ],
+        "axes": [
+            "@x_column",
+            "@y_column",
+            "@tof_column"
+        ],
+        "ranges": [
+            [
+                0,
+                1800
+            ],
+            [
+                0,
+                1800
+            ],
+            [
+                0,
+                150000
+            ]
+        ]
+    }
+}

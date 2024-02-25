@@ -1,5 +1,9 @@
 [tool.poetry]
 name = "pydantic-flash-schema-validator-ui"
+packages = [
+    { include = "schema" },
+    { include = "ui" },
+]
 version = "0.1.0"
 description = ""
 authors = ["Zain Sohail <zainsohail04@gmail.com>"]
@@ -10,7 +14,9 @@ readme = "README.md"
 python = ">=3.10, <=3.12"
 streamlit = "^1.31.1"
 pydantic = "^2.6.2"
-
+streamlit-pydantic = { path = "streamlit-pydantic/", develop = true }
+pydantic-extra-types = "^2.5.0"
+pydantic-settings = "^2.2.1"
 
 [build-system]
 requires = ["poetry-core"]
